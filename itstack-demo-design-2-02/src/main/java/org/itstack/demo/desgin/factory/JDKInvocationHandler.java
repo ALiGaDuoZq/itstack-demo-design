@@ -13,6 +13,7 @@ public class JDKInvocationHandler implements InvocationHandler {
         this.cacheAdapter = cacheAdapter;
     }
 
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         return ICacheAdapter.class.getMethod(method.getName(), ClassLoaderUtils.getClazzByArgs(args)).invoke(cacheAdapter, args);
     }
